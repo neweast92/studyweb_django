@@ -1,7 +1,7 @@
 from unicodedata import name
 from django.urls import path
 
-from base.views import createRoom, deleteRoom, home, loginPage, logoutUser, registerPage, room, updateRoom
+from base.views import *
 
 urlpatterns = [
     path('', home, name="home"),
@@ -12,5 +12,8 @@ urlpatterns = [
 
     path('login/', loginPage, name="login"),
     path('logout/', logoutUser, name="logout"),
-    path('register/', registerPage, name='register')
+    path('register/', registerPage, name='register'),
+    path('profile/<str:pk>', userProfile, name='user-profile'),
+
+    path('delete-message/<str:pk>', deleteMessage, name='delete-message')
 ]

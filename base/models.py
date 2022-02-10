@@ -18,7 +18,7 @@ class Room(models.Model):
     # null: can be null in database
     # blank: form data can be blank whether add or update it
     description = models.TextField(null=True, blank=True)
-    # participants
+    participants = models.ManyToManyField(User, related_name='participants', blank=True) # User를 이미 host에서 참조하고 있으므로, related_name 설정
     updated = models.DateTimeField(auto_now=True) # every saving time
     created = models.DateTimeField(auto_now_add=True) # only when first created
 
@@ -36,5 +36,8 @@ class Message(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-updated', '-created']
+
     def __str__(self) -> str:
-        return self.body[0:5]
+        return self.body[0:50]
