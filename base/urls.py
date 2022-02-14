@@ -18,5 +18,6 @@ urlpatterns = [
 
     path('delete-message/<str:pk>', deleteMessage, name='delete-message'),
 
-    path('topics/', topicsPage, name="topics")
+    path('topics/', topicsPage, name="topics"),
+    path('activity/', activitiesPage, name='activity')
 ]
